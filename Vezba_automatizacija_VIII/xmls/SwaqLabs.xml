@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Login Test Suite">
+
+    <test name="Login valid user 1">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login valid user 1 and logout">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="errorMessage" value="Epic sadface: Sorry, this user has been locked out."/>
+        <parameter name="logoutMessage" value="Login"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                    <include name="logOut"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login valid user 2">
+        <parameter name="testType" value="positive"/>
+        <parameter name="username" value="problem_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login valid user 3">
+        <parameter name="testType" value="positive"/>
+        <parameter name="username" value="performance_glitch_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login problem user">
+        <parameter name="testType" value="negative"/>
+        <parameter name="username" value="locked_out_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="errorMessage" value="Epic sadface: Sorry, this user has been locked out."/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login invalid credentials 1">
+        <parameter name="testType" value="negative"/>
+        <parameter name="username" value="eweweww"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login invalid credentials 2">
+        <parameter name="testType" value="negative"/>
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="weew"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Login invalid credentials 3">
+        <parameter name="testType" value="negative"/>
+        <parameter name="username" value=""/>
+        <parameter name="password" value="weew"/>
+        <parameter name="errorMessage" value="Epic sadface: Username is required"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Check parameters of First product">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                    <include name="checkFirstProduct"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add products and check the basket">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                    <include name="AddProductsAndCheckBasket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="CheckOut first user">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="firstName" value="Sasa"/>
+        <parameter name="lastName" value="Stjepanovic"/>
+        <parameter name="zipCode" value="21000"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                    <include name="AddProductsAndCheckBasket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="CheckOut second user">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="firstName" value="Nikola"/>
+        <parameter name="lastName" value="Petrovic"/>
+        <parameter name="zipCode" value="21000"/>
+        <classes>
+            <class name="SwagLabs">
+                <methods>
+                    <include name="loginToSwagLabs"/>
+                    <include name="AddProductsAndCheckBasket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
+
