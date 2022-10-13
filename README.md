@@ -1,0 +1,1 @@
+# Vezba_automatizacija_VIII
